@@ -64,7 +64,7 @@ body{
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.logo-link:hover{
+/* .logo-link:hover{
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
 }
@@ -79,7 +79,7 @@ body{
 
 .logo-link:hover .logo-suffix{
   color: #ffffff;
-}
+} */
 
 
 
