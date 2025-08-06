@@ -93,7 +93,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="footer-bottom">
             <div className="footer-bottom-content">
-              <p>&copy; 2024 Centric.DXB. All rights reserved.</p>
+              <p>&copy; 2025 Centric.DXB. All rights reserved.</p>
               <div className="footer-bottom-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
