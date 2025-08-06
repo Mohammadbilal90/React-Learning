@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { insertRecord, signUp } from '../lib/database';
+import { sendEmail } from '../lib/emailService';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    password: '' // Add password field for user registration
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -15,11 +19,51 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setLoading(true);
+
+    try {
+      // 1. Create user account in Supabase Auth
+      console.log('Creating user account...');
+      const authResult = await signUp(formData.email, formData.password);
+      console.log('✅ User account created:', authResult);
+
+      // 2. Store contact form data in Supabase database
+      const contactRecord = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        created_at: new Date().toISOString()
+      };
+
+      const result = await insertRecord('contacts', contactRecord);
+      console.log('✅ Contact form data processed:', result);
+
+      // 3. Send confirmation email
+      const emailSent = await sendEmail(formData);
+
+      if (emailSent) {
+        alert('✅ Account created successfully! Check your email for confirmation.');
+      } else {
+        alert('✅ Account created successfully! Please check your email to confirm your account.');
+      }
+
+      // Reset form
+      setFormData({ name: '', email: '', subject: '', message: '', password: '' });
+    } catch (error) {
+      console.error('❌ Form submission error:', error);
+      
+      // Check if it's an auth error
+      if (error.message?.includes('already registered')) {
+        alert('This email is already registered. Please sign in instead.');
+      } else {
+        alert('There was an error. Please try again or contact support.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,10 +111,13 @@ const Contact = () => {
           </div>
 
           <div className="contact-form">
-            <h2>Send Message</h2>
+            <h2>Send Message & Create Account</h2>
+            <p style={{color: '#666', marginBottom: '20px'}}>
+              Fill out this form to send us a message and create your account.
+            </p>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Full Name</label>
                 <input
                   type="text"
                   id="name"
@@ -90,6 +137,19 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="password">Password </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  minLength="6"
                 />
               </div>
 
@@ -117,7 +177,13 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-btn">Send Message</button>
+              <button 
+                type="submit" 
+                className="submit-btn" 
+                disabled={loading}
+              >
+                {loading ? 'Creating Account & Sending...' : 'Send Message & Create Account'}
+              </button>
             </form>
           </div>
         </div>
