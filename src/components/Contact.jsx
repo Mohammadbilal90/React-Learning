@@ -11,12 +11,17 @@ const Contact = () => {
     password: '' // Add password field for user registration
   });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (e) => {
@@ -52,6 +57,7 @@ const Contact = () => {
 
       // Reset form
       setFormData({ name: '', email: '', subject: '', message: '', password: '' });
+      setShowPassword(false);
     } catch (error) {
       console.error('❌ Form submission error:', error);
       
@@ -102,16 +108,31 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Password </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                  minLength="6"
-                />
+                <label htmlFor="password">Password</label>
+                <div className="password-input-container">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                    minLength="6"
+                    className="password-input"
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle-btn"
+                    onClick={togglePasswordVisibility}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <span className="eye-icon">👁️‍🗨️</span>
+                    ) : (
+                      <span className="eye-icon">👁️</span>
+                    )}
+                  </button>
+                </div>
               </div>
 
               <div className="form-group">
@@ -193,3 +214,5 @@ const Contact = () => {
 };
 
 export default Contact; 
+
+
