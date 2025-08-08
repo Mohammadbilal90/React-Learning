@@ -2026,6 +2026,10 @@ body{
     font-size: 2rem;
   }
   
+  .page-container .container {
+    padding: 10px;
+  }
+  
   .products-grid,
   .awards-grid,
   .resources-grid {
