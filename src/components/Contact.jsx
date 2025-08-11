@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { insertRecord, signUp } from '../lib/database';
 import { sendEmail } from '../lib/emailService';
 
@@ -12,6 +12,21 @@ const Contact = () => {
   });
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    // Initialize AOS for contact page animations
+    if (window.AOS) {
+      window.AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: false,
+        offset: 100,
+        delay: 0
+      });
+      window.AOS.refresh();
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -75,9 +90,9 @@ const Contact = () => {
   return (
     <div className="page-container">
       <div className="container">
-        <h1>Contact Us</h1>
+        <h1 data-aos="fade-up" data-aos-duration="1000">Contact Us</h1>
         <div className="contact-content">
-          <div className="contact-form">
+          <div className="contact-form" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
             <h2>Send Message & Create Account</h2>
             <p style={{color: '#666', marginBottom: '20px'}}>
               Fill out this form to send us a message and create your account.
@@ -169,12 +184,12 @@ const Contact = () => {
             </form>
           </div>
 
-          <div className="contact-info">
+          <div className="contact-info" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
             <h2>Get in Touch</h2>
             <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
             
             <div className="contact-details">
-              <div className="contact-item">
+              <div className="contact-item" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
                 <div className="contact-icon">📍</div>
                 <div>
                   <h4>Address</h4>
@@ -182,7 +197,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="contact-item">
+              <div className="contact-item" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
                 <div className="contact-icon">📧</div>
                 <div>
                   <h4>Email</h4>
@@ -190,7 +205,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="contact-item">
+              <div className="contact-item" data-aos="fade-up" data-aos-delay="500" data-aos-duration="800">
                 <div className="contact-icon">📞</div>
                 <div>
                   <h4>Phone</h4>
@@ -198,7 +213,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="contact-item">
+              <div className="contact-item" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
                 <div className="contact-icon">🕒</div>
                 <div>
                   <h4>Working Hours</h4>

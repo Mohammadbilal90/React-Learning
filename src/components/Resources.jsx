@@ -1,93 +1,72 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Resources = () => {
+  useEffect(() => {
+    console.log('Resources component mounted');
+    console.log('AOS available:', !!window.AOS);
+    
+    if (window.AOS) {
+      console.log('Initializing AOS...');
+      window.AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: false,
+        offset: 100,
+        delay: 0
+      });
+      window.AOS.refresh();
+      console.log('AOS initialized successfully');
+    } else {
+      console.error('AOS is not available!');
+    }
+  }, []);
+
   return (
     <div className="page-container">
       <div className="container">
-        <h1>Resources</h1>
+        <h1 data-aos="fade-up" data-aos-duration="1000">Resources</h1>
         <div className="resources-grid">
-          <div className="resource-card">
+          <div className="resource-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
             <div className="resource-icon">📚</div>
             <h3>Documentation</h3>
-            <p>Comprehensive guides, API documentation, and technical resources for developers and users.</p>
+            <p>Comprehensive guides and documentation for all our products and services.</p>
             <button className="resource-btn">View Docs</button>
           </div>
 
-          <div className="resource-card">
+          <div className="resource-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
             <div className="resource-icon">🎥</div>
             <h3>Video Tutorials</h3>
-            <p>Step-by-step video tutorials covering all aspects of our products and services.</p>
+            <p>Step-by-step video tutorials to help you get the most out of our solutions.</p>
             <button className="resource-btn">Watch Videos</button>
           </div>
 
-          <div className="resource-card">
-            <div className="resource-icon">💡</div>
-            <h3>Blog & Insights</h3>
-            <p>Latest industry insights, tips, and best practices from our expert team.</p>
+          <div className="resource-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+            <div className="resource-icon">📖</div>
+            <h3>Blog</h3>
+            <p>Latest insights, tips, and industry news from our team of experts.</p>
             <button className="resource-btn">Read Blog</button>
           </div>
 
-          <div className="resource-card">
-            <div className="resource-icon">🛠️</div>
-            <h3>Developer Tools</h3>
-            <p>Free tools, SDKs, and utilities to help developers build better applications.</p>
-            <button className="resource-btn">Get Tools</button>
+          <div className="resource-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+            <div className="resource-icon">💬</div>
+            <h3>Community Forum</h3>
+            <p>Connect with other users and get answers to your questions.</p>
+            <button className="resource-btn">Join Forum</button>
           </div>
 
-          <div className="resource-card">
-            <div className="resource-icon">🎥</div>
-            <h3>Video Tutorials</h3>
-            <p>Step-by-step video tutorials covering all aspects of our products and services.</p>
-            <button className="resource-btn">Watch Videos</button>
-          </div>
-
-          <div className="resource-card">
-            <div className="resource-icon">💡</div>
-            <h3>Blog & Insights</h3>
-            <p>Latest industry insights, tips, and best practices from our expert team.</p>
-            <button className="resource-btn">Read Blog</button>
-          </div>
-
-          <div className="resource-card">
-            <div className="resource-icon">🛠️</div>
-            <h3>Developer Tools</h3>
-            <p>Free tools, SDKs, and utilities to help developers build better applications.</p>
-            <button className="resource-btn">Get Tools</button>
-          </div>
-
-          <div className="resource-card">
-            <div className="resource-icon">🎥</div>
-            <h3>Video Tutorials</h3>
-            <p>Step-by-step video tutorials covering all aspects of our products and services.</p>
-            <button className="resource-btn">Watch Videos</button>
-          </div>
-
-          <div className="resource-card">
-            <div className="resource-icon">💡</div>
-            <h3>Blog & Insights</h3>
-            <p>Latest industry insights, tips, and best practices from our expert team.</p>
-            <button className="resource-btn">Read Blog</button>
-          </div>
-
-          <div className="resource-card">
-            <div className="resource-icon">🛠️</div>
-            <h3>Developer Tools</h3>
-            <p>Free tools, SDKs, and utilities to help developers build better applications.</p>
-            <button className="resource-btn">Get Tools</button>
-          </div>
-
-          <div className="resource-card">
-            <div className="resource-icon">📊</div>
-            <h3>Case Studies</h3>
-            <p>Real-world examples of how our solutions have transformed businesses.</p>
-            <button className="resource-btn">View Cases</button>
-          </div>
-
-          <div className="resource-card">
+          <div className="resource-card" data-aos="fade-up" data-aos-delay="500" data-aos-duration="800">
             <div className="resource-icon">🎓</div>
-            <h3>Training Programs</h3>
-            <p>Comprehensive training programs and certification courses for professionals.</p>
-            <button className="resource-btn">Learn More</button>
+            <h3>Training Courses</h3>
+            <p>Comprehensive training programs to master our platforms and tools.</p>
+            <button className="resource-btn">Start Learning</button>
+          </div>
+
+          <div className="resource-card" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
+            <div className="resource-icon">🔧</div>
+            <h3>API Reference</h3>
+            <p>Detailed API documentation for developers integrating with our services.</p>
+            <button className="resource-btn">View API</button>
           </div>
         </div>
       </div>

@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Products = () => {
+  useEffect(() => {
+    // Initialize AOS for products page animations
+    if (window.AOS) {
+      window.AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: false,
+        offset: 100,
+        delay: 0
+      });
+      window.AOS.refresh();
+    }
+  }, []);
+
   return (
     <div className="page-container">
       <div className="container">
-        <h1>Our Products</h1>
-        <p>Discover our innovative software solutions designed to transform your business operations. From lead generation to internal collaboration, we provide cutting-
+        <h1 data-aos="fade-up" data-aos-duration="1000">Our Products</h1>
+        <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">Discover our innovative software solutions designed to transform your business operations. From lead generation to internal collaboration, we provide cutting-
           edge platforms that drive efficiency and growth. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nulla dolore ex veniam obcaecati magnam sequi. Minus q
           uod veniam assumenda incidunt ipsam quidem vel ducimus alias architecto, nihil delectus est reprehenderit! Lorem ipsum dolor sit amet consectetur, adipisicing elit
           . Minus est temporibus voluptatibus vel ipsa sequi porro, laudantium blanditiis numquam magni. </p>
         <div className="products-grid">
-          <div className="product-card">
+          <div className="product-card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
             <div className="product-image">
               <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Software Solution" />
             </div>
@@ -21,7 +36,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="product-card">
+          <div className="product-card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
             <div className="product-image">
               <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Analytics Platform" />
             </div>
@@ -32,7 +47,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="product-card">
+          <div className="product-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
             <div className="product-image">
               <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop" alt="Cloud Services" />
             </div>
@@ -43,7 +58,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="product-card">
+          <div className="product-card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
             <div className="product-image">
               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Liprospect" />
             </div>
@@ -54,7 +69,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="product-card">
+          <div className="product-card" data-aos="fade-up" data-aos-delay="500" data-aos-duration="800">
             <div className="product-image">
               <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop" alt="Centric Intranet" />
             </div>
@@ -65,7 +80,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="product-card">
+          <div className="product-card" data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
             <div className="product-image">
               <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Applicant Tracking Platform" />
             </div>
