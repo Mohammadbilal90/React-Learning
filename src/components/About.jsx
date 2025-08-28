@@ -15,7 +15,7 @@ const About = () => {
       window.AOS.refresh();
     }
   }, []);
-
+// one of the most important things to do is to ensure that AOS is initialized correctly
   return (
     <div className="page-container">
       {/* Simple About Section */}
@@ -53,7 +53,7 @@ const About = () => {
           </div>
         </div>
       </section>
-
+     
       {/* Services Overview */}
       <section className="services-overview">
         <div className="container">

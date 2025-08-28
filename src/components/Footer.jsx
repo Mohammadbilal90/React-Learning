@@ -25,7 +25,7 @@ const Footer = () => {
             <div className="footer-contact">
               <div className="contact-locations">
                 <div className="location-item">
-                  <div className="contact-icon">📍</div>
+                  <div className="contact-icon"></div>
                   <div className="contact-details">
                     <p className="contact-text">Dubai Internet City, Dubai, UAE</p>
                     <span className="contact-label">UAE Address</span>
@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
                 
                 <div className="location-item">
-                  <div className="contact-icon">📞</div>
+                  <div className="contact-icon"></div>
                   <div className="contact-details">
                     <p className="contact-text">+971 4 123 4567</p>
                     <span className="contact-label">Phone</span>
@@ -41,7 +41,7 @@ const Footer = () => {
                 </div>
                 
                 <div className="location-item">
-                  <div className="contact-icon">📧</div>
+                  <div className="contact-icon"></div>
                   <div className="contact-details">
                     <p className="contact-text">info@centric.dxb</p>
                     <span className="contact-label">Email</span>
@@ -49,7 +49,7 @@ const Footer = () => {
                 </div>
                 
                 <div className="location-item">
-                  <div className="contact-icon">🕒</div>
+                  <div className="contact-icon"></div>
                   <div className="contact-details">
                     <p className="contact-text">Sunday - Thursday, 9:00 AM - 6:00 PM</p>
                     <span className="contact-label">Working Hours</span>
